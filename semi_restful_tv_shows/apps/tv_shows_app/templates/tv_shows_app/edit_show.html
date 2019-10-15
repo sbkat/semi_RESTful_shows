@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Update</title>
+</head>
+
+<header>
+    <h1 class="display-4" style="display:inline-block;">Edit Show {{ this_show.id }}</h1>
+    <a href="/shows" style="display:inline-block; margin-left:50vw">Go Back</a>
+</header>
+
+<body style="margin:20px;">
+    <div name="error_div">   
+        {% if messages %}
+        <ul class="messages" list-style-type="none;" style="color:rgb(216, 20, 20)">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <div style="width:70vw; display:inline-block; vertical-align: top;">
+        <form action="/shows/{{ this_show.id }}/update" method="POST" name="update_show">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" aria-describedby="title" name="title" value="{{ this_show.title }}">
+            </div>
+            <div class="form-group">
+                <label for="network">Network</label>
+                <input type="text" class="form-control" id="network" name="network" value="{{ this_show.network }}">
+            </div>
+            <div class="form-group">
+                    <label for="release_date">Release Date</label>
+                    <input type="date" class="form-control" id="release_date" name="release_date" value="{{ this_show.release_date|date:'Y-m-d' }}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" value="{{ this_show.description }}">
+            </div>
+            <button type="submit" class="btn btn-outline-success">Update</button>
+        </form>
+    </div>
+    <div style="margin-top:20px;">
+        <a href="/shows/{{this_show.id}}">Go to Show</a>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Read (One)</title>
+</head>
+
+<header>
+    <h1 class="display-4" style="display:inline-block;">TV Show {{ this_show.id }}</h1>
+    <a href="/shows" style="display:inline-block; margin-left:50vw">Go Back</a>
+</header>
+
+<body style="margin:20px;">
+    <div style="width:70vw; display:inline-block; vertical-align: top;">
+        <ul style="list-style:none;">
+            <li>Title: <p class="lead">{{ this_show.title }}</p></li>
+            <li>Network: <p class="lead">{{ this_show.network }}</p></li>
+            <li>Release Date: <p class="lead">{{ this_show.release_date }}</p></li>
+            <li>Description: <p class="lead">{{ this_show.description }}</p></li>
+        </ul>
+    </div><br>
+    <div>
+        Last Updated: {{ this_show.updated_at}}<br>
+        <a href="/shows/{{ this_show.id }}/edit">Edit</a> |
+        <a href="">Delete</a>
+    </div>
+
+</body>
+
+</html>
